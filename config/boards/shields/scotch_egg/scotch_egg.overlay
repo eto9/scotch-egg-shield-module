@@ -1,6 +1,15 @@
 #include "scotch_egg.dtsi"
 
-&xiao_serial { status = "disabled"; };
+/ {
+    chosen {
+        zmk,studio-rpc-uart = &xiao_serial;
+    };
+};
+
+&xiao_serial {
+    status = "okay";
+    current-speed = <115200>;
+};
 
 &kscan0 {
     col-gpios
