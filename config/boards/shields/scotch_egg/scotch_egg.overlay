@@ -4,6 +4,17 @@
     chosen {
         zmk,studio-rpc-uart = &xiao_serial;
     };
+
+    /* NFCピン (P0.09, P0.10) を GPIO として使用するための宣言 */
+    nfc_pins_fix: nfc_pins_fix {
+        compatible = "nordic,nrf-pinctrl";
+        status = "okay";
+    };
+};
+
+/* チップの設定レジスタ (UICR) で NFC 機能を無効化 */
+&uicr {
+    nfct-pins-as-gpios;
 };
 
 &xiao_serial {
